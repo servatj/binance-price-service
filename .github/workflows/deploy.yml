@@ -19,7 +19,7 @@ jobs:
           target: /home/${{ secrets.DROPLET_SSH_USER }}/app
       - name: Build and run Docker container
         run: |
-          ssh -o StrictHostKeyChecking=no -i ${{ secrets.DROPLET_SSH_KEY }} ${{ secrets.DROPLET_SSH_USER }}@${{ secrets.DROPLET_SSH_HOST }} << EOF
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.DROPLET_SSH_KEY_LINE }} ${{ secrets.DROPLET_SSH_USER }}@${{ secrets.DROPLET_SSH_HOST }} << EOF
             cd /home/${{ secrets.DROPLET_SSH_USER }}/app
             sudo docker-compose up -d
             exit
