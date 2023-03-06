@@ -26,7 +26,7 @@ const authenticateToken = (req, res, next) => {
     next();
 };
 
-app.get("/price", authenticateToken, async (req, res) => {
+app.get("/price", async (req, res) => {
     const { pair } = req.query;
     const price = await getPrice(pair);
     res.status(200).json(price);
