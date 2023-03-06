@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: price-app
+    container_name: price-app
+    restart: always
+    ports:
+      - "3000:3000"
+    command: npm start
