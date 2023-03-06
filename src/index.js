@@ -29,7 +29,14 @@ const authenticateToken = (req, res, next) => {
 app.get("/price", authenticateToken, async (req, res) => {
     const { pair } = req.query;
     const price = await getPrice(pair);
-    res.json(price);
+    res.status(200).json(price);
+});
+
+
+app.get("/", async (req, res) => {
+    res.status(200).json({
+        message: "Server is running"
+    });
 });
 
 app.listen(PORT, () => {
