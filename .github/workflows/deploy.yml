@@ -17,8 +17,5 @@ jobs:
           key: ${{ secrets.DROPLET_SSH_KEY }}
           source: .
           target: /home/${{ secrets.DROPLET_SSH_USER }}/app
-      - name: Disable Host key verification
-        # Hack to prevent "Host key verification failed". Should be replaced with a ssh-keyscan based solution
-        run: echo "StrictHostKeyChecking no" >> ~/.ssh/config
       - name: Build and run Docker container
         run: docker-compose up -d
