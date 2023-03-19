@@ -15,6 +15,14 @@ async function getTokenPrice(symbol) {
 	}
 }
 
+async function getLastTick(symbol) {
+	const interval = "1d";
+	const url = `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}`;
+	const response = await axios.get(url);
+	return response.data;
+}
+
 module.exports = {
 	getTokenPrice,
+	getLastTick,
 };

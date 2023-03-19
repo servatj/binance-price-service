@@ -1,6 +1,6 @@
 const express = require('express')
 require('dotenv').config();
-const { getTokenPrice } = require("./lib/binanceAPI");
+const { getTokenPrice, getLastTick } = require("./lib/binanceAPI");
 
 async function getPrice(pair = "BTCUSDT") {
 	try {
@@ -32,6 +32,11 @@ app.get("/price", async (req, res) => {
     res.status(200).json(price);
 });
 
+app.get("/tick", async (req, res) => {
+    const { pair } = req.query;
+    const tick = await getLastTick(pair);
+    res.status(200).json(tick);
+});
 
 app.get("/", async (req, res) => {
     res.status(200).json({
